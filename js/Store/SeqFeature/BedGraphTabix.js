@@ -23,8 +23,8 @@ function (
             }
 
             var featureData = {
-                start: parseInt(fields[columnNumbers.start - 1]),
-                end: parseInt(fields[columnNumbers.end - 1]),
+                start: parseInt(fields[columnNumbers.start - 1], 10),
+                end: parseInt(fields[columnNumbers.end - 1], 10),
                 seq_id: fields[columnNumbers.ref - 1],
                 score: fields[3]
             };

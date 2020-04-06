@@ -11,7 +11,7 @@
       "category": "Reference sequence"
     },
     {
-      "type": "SNPCoverage",
+      "type": "MPileupPlugin/View/Track/SNPCoverage",
       "storeClass": "MPileupPlugin/Store/SeqFeature/ACGT",
       "label": "plot",
       "urlTemplate": "out.bed.gz"
@@ -19,6 +19,6 @@
   ],
   "formatVersion": 1,
   "plugins": [
-    "MPileup"
+    "MPileupPlugin"
   ]
 }
