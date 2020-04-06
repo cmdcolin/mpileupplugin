@@ -40,6 +40,21 @@ ctgA    21      A       5       5       0       0       0       5:0:0:0
 
 ```
 
+## Sample config
+
+The configuration looks like this, where type is our custom SNPCoverage track type (to avoid some constructor behavior of the default SNPCoverage that assumes BAM input)
+
+The storeClass is also our custom store class
+
+    {
+      "type": "MPileupPlugin/View/Track/SNPCoverage",
+      "storeClass": "MPileupPlugin/Store/SeqFeature/ACGT",
+      "label": "SNPCoverage with ACGT table",
+      "urlTemplate": "out.bed.gz"
+    }
+
+See also test/data/trackList.json
+
 ## Intallation
 
 Clone the repository to the jbrowse plugins subdirectory and name it MPilupPlugin
