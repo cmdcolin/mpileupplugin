@@ -3,6 +3,7 @@
   "extends": "eslint-config-airbnb-es5",
   "plugins": [],
   "rules": {
+    "curly": "error",
     "no-var": 0,
     "no-console": 0,
     "space-in-parens": ["error", "never"],

@@ -1,0 +1,24 @@
+{
+  "tracks": [
+    {
+      "seqType": "dna",
+      "key": "Reference sequence",
+      "storeClass": "JBrowse/Store/Sequence/StaticChunked",
+      "chunkSize": 20000,
+      "urlTemplate": "seq/{refseq_dirpath}/{refseq}-",
+      "label": "DNA",
+      "type": "SequenceTrack",
+      "category": "Reference sequence"
+    },
+    {
+      "type": "MPileupPlugin/View/Track/SNPCoverage",
+      "storeClass": "MPileupPlugin/Store/SeqFeature/ACGT",
+      "label": "ACGT",
+      "urlTemplate": "align_14-50.align.gz"
+    }
+  ],
+  "formatVersion": 1,
+  "plugins": [
+    "MPileupPlugin"
+  ]
+}

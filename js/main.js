@@ -7,11 +7,9 @@ function (
     JBrowsePlugin
 ) {
     return declare(JBrowsePlugin, {
-        constructor: function (args) {
-            var browser = args.browser;
-
+        constructor: function () {
             // Do anything you need to initialize your plugin here
-            console.log('MPilup plugin starting');
+            console.log('MPileupPlugin plugin starting');
         }
     });
 });
