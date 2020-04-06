@@ -12,7 +12,7 @@
     },
     {
       "type": "SNPCoverage",
-      "storeClass": "MPileup/Store/SeqFeature/BedGraphTabix",
+      "storeClass": "MPileupPlugin/Store/SeqFeature/ACGT",
       "label": "plot",
       "urlTemplate": "out.bed.gz"
     }

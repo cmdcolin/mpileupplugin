@@ -22,6 +22,7 @@ function (
         },
 
         getFeatures: function (query, featureCallback, finishCallback, errorCallback) {
+            console.log(query);
             this.store.getFeatures(query, function (res) {
                 finishCallback();
             },
