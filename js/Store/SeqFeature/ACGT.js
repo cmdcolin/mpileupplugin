@@ -1,17 +1,11 @@
 define([
     'dojo/_base/declare',
-    'dojo/_base/array',
-    'JBrowse/Store/SeqFeature',
-    'JBrowse/Util',
     'JBrowse/Model/CoverageFeature',
     'JBrowse/Model/NestedFrequencyTable',
     'JBrowse/Store/SeqFeature/BEDTabix'
 ],
 function (
     declare,
-    array,
-    SeqFeatureStore,
-    Util,
     CoverageFeature,
     NestedFrequencyTable,
     BEDTabix,
