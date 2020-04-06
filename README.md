@@ -40,11 +40,8 @@ ctgA    21      A       5       5       0       0       0       5:0:0:0
 
 ```
 
-## Sample config
+The config is as follows
 
-The configuration looks like this, where type is our custom SNPCoverage track type (to avoid some constructor behavior of the default SNPCoverage that assumes BAM input)
-
-The storeClass is also our custom store class
 
     {
       "type": "MPileupPlugin/View/Track/SNPCoverage",
@@ -53,16 +50,23 @@ The storeClass is also our custom store class
       "urlTemplate": "out.bed.gz"
     }
 
-See also test/data/trackList.json
 
-In tracks.conf format this is
+## Example setup for BigWig and VCF
 
+    {
+      "type": "MPileupPlugin/View/Track/SNPCoverage",
+      "storeClass": "MPileupPlugin/Store/SeqFeature/BigWigVcf",
+      "label": "SNPCoverage with BigWig+VCF",
+      "bigwig": {
+        "storeClass": "JBrowse/Store/SeqFeature/BigWig",
+        "urlTemplate": "volvox-sorted.bam.coverage.bw"
+      },
+      "vcf": {
+        "storeClass": "JBrowse/Store/SeqFeature/VCFTabix",
+        "urlTemplate": "volvox.filtered.vcf.gz"
+      }
+    }
 
-    [tracks.snpcov]
-    type=MPileupPlugin/View/Track/SNPCoverage
-    storeClass=MPileupPlugin/Store/SeqFeature/ACGT
-    key=SNPCoverage with ACGT table
-    urlTemplate=out.bed.gz
 
 ## Intallation
 
