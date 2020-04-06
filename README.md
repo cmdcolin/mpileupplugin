@@ -55,6 +55,15 @@ The storeClass is also our custom store class
 
 See also test/data/trackList.json
 
+In tracks.conf format this is
+
+
+    [tracks.snpcov]
+    type=MPileupPlugin/View/Track/SNPCoverage
+    storeClass=MPileupPlugin/Store/SeqFeature/ACGT
+    key=SNPCoverage with ACGT table
+    urlTemplate=out.bed.gz
+
 ## Intallation
 
 Clone the repository to the jbrowse plugins subdirectory and name it MPilupPlugin
