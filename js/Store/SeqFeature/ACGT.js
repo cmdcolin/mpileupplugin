@@ -24,11 +24,21 @@ function (
             const N = +fields[8];
             // const strands = fields[8]
             const bin = new NestedFrequencyTable();
-            if (A && refBase !== 'A')bin.increment('A', A);
-            if (C && refBase !== 'C')bin.increment('C', C);
-            if (G && refBase !== 'G')bin.increment('G', G);
-            if (T && refBase !== 'T')bin.increment('T', T);
-            if (N && !Number.isNaN(N) && refBase !== 'N')bin.increment('N', N);
+            if (A && refBase !== 'A') {
+                bin.increment('A', A);
+            }
+            if (C && refBase !== 'C') {
+                bin.increment('C', C);
+            }
+            if (G && refBase !== 'G') {
+                bin.increment('G', G);
+            }
+            if (T && refBase !== 'T') {
+                bin.increment('T', T);
+            }
+            if (N && !Number.isNaN(N) && refBase !== 'N') {
+                bin.increment('N', N);
+            }
             bin.increment('reference', {'N': N, 'A': A, 'C': C, 'G': G, 'T': T}[refBase]);
             bin.snpsCounted = true;
             return new CoverageFeature({start, end, score: bin});

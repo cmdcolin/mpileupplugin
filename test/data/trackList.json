@@ -21,6 +21,19 @@
       "storeClass": "JBrowse/Store/SeqFeature/BAM",
       "label": "SNPCoverage with BAM",
       "urlTemplate": "volvox-sorted.bam"
+    },
+    {
+      "type": "SNPCoverage",
+      "storeClass": "MPileupPlugin/Store/SeqFeature/BigWigVcf",
+      "label": "SNPCoverage with BigWig+VCF",
+      "bigWig": {
+        "storeClass": "JBrowse/Store/SeqFeature/BigWig",
+        "urlTemplate": "volvox-sorted.bam"
+      },
+      "vcf": {
+        "storeClass": "JBrowse/Store/SeqFeature/VCFTabix",
+        "urlTemplate": "volvox.filtered.vcf.gz"
+      }
     }
   ],
   "formatVersion": 1,
