@@ -1,10 +1,14 @@
 # mpilupplugin
 
+## Screenshot
+
+![](img/1.png)
 
 ## Example setup
 
 
     samtools mpileup -f volvox.fa -q 20 volvox-sorted.bam  |  sequenza-utils pileup2acgt -p - > out.txt
+    # now comment out the header line, don't have the sed 1 liner for this
     bgzip out.txt
     # start and end are same column
     tabix  -s 1 -b 2 -e 2 out.txt.gz -f

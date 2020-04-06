@@ -21,8 +21,7 @@ function (
             const fields = line.split('\t');
             const start = +fields[1];
             const end = +fields[1] + 1;
-            // const refBase = fields[2];
-            const depth = +fields[3];
+            const refBase = fields[2];
 
             const A = +fields[4];
             const C = +fields[5];
@@ -30,11 +29,11 @@ function (
             const T = +fields[7];
             // const strands = fields[8]
             const bin = new NestedFrequencyTable();
-            if (A)bin.increment('A', A);
-            if (C)bin.increment('C', C);
-            if (G)bin.increment('G', G);
-            if (T)bin.increment('T', T);
-            bin.increment('reference', depth - A - C - G - T);
+            if (A && refBase !== 'A')bin.increment('A', A);
+            if (C && refBase !== 'C')bin.increment('C', C);
+            if (G && refBase !== 'G')bin.increment('G', G);
+            if (T && refBase !== 'T')bin.increment('T', T);
+            bin.increment('reference', {'A': A, 'C': C, 'G': G, 'T': T}[refBase]);
             return new CoverageFeature({start, end, score: bin});
         }
     });
