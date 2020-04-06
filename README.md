@@ -43,6 +43,9 @@ This track type is not really optimized well because bedtabix for numerical data
 
 ## Example setup for BigWig and VCF
 
+
+This assumes that the DP4 tag in the VCF info field exists and it assumes that DP4 is for a single alternative allele, no support for multiple alleles yet
+
     {
       "type": "MPileupPlugin/View/Track/SNPCoverage",
       "storeClass": "MPileupPlugin/Store/SeqFeature/BigWigVcf",
