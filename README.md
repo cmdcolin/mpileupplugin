@@ -1,6 +1,15 @@
 # mpilupplugin
 
 
+## Example setup
+
+
+    samtools mpileup -f volvox.fa -q 20 volvox-sorted.bam  |  sequenza-utils pileup2acgt -p - > out.txt
+    bgzip out.txt
+    # start and end are same column
+    tabix  -s 1 -b 2 -e 2 out.txt.gz -f
+
+
 ## Intallation
 
 Clone the repository to the jbrowse plugins subdirectory and name it MPilup

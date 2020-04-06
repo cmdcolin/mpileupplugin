@@ -12,9 +12,9 @@
     },
     {
       "type": "SNPCoverage",
-      "storeClass": "JBrowse/Store/SeqFeature/BedGraphTabix",
+      "storeClass": "MPileup/Store/SeqFeature/BedGraphTabix",
       "label": "plot",
-      "urlTemplate": "data.bed.gz"
+      "urlTemplate": "out.bed.gz"
     }
   ],
   "formatVersion": 1,
