@@ -1,10 +1,17 @@
 # mpilupplugin
 
+This plugin offers some alternative ways to visualize SNPCoverage track types with alternate data sources
+
+
+These are called ACGT for a simepl BED tabixed table of ACGT counts
+
+The other is a BigWig and VCF combo store
+
 ## Screenshot
 
 ![](img/1.png)
 
-## Example setup
+## Example setup for ACGT
 
 
     samtools mpileup -f volvox.fa -q 20 volvox-sorted.bam  |  sequenza-utils pileup2acgt -p - > out.txt
@@ -13,32 +20,14 @@
     # start and end are same column
     tabix  -s 1 -b 2 -e 2 out.txt.gz -f
 
-
-Currently assumes data format like this
+The data from this program looks like this
 
 ```
 #chr    n_base  ref_base        read.depth      A       C       G       T       strand
 ctgA    3       T       1       0       0       0       1       0:0:0:1
-ctgA    4       T       1       0       0       0       1       0:0:0:1
-ctgA    5       G       1       0       0       1       0       0:0:1:0
-ctgA    6       T       1       0       0       0       1       0:0:0:1
-ctgA    7       T       1       0       0       0       1       0:0:0:1
-ctgA    8       G       2       0       0       2       0       0:0:2:0
-ctgA    9       C       2       0       2       0       0       0:2:0:0
-ctgA    10      G       2       0       0       2       0       0:0:2:0
-ctgA    11      G       2       0       0       2       0       0:0:2:0
-ctgA    12      A       2       2       0       0       0       2:0:0:0
-ctgA    13      G       2       0       0       2       0       0:0:2:0
-ctgA    14      T       2       0       0       0       2       0:0:0:2
-ctgA    15      T       2       0       0       0       2       0:0:0:2
-ctgA    16      G       3       0       0       3       0       0:0:3:0
-ctgA    17      A       4       4       0       0       0       4:0:0:0
-ctgA    18      A       5       4       0       1       0       4:0:1:0
-ctgA    19      C       5       0       5       0       0       0:5:0:0
-ctgA    20      A       5       5       0       0       0       5:0:0:0
-ctgA    21      A       5       5       0       0       0       5:0:0:0
 
 ```
+
 
 The config is as follows
 
@@ -50,6 +39,7 @@ The config is as follows
       "urlTemplate": "out.bed.gz"
     }
 
+This track type is not really optimized well because bedtabix for numerical data is slow
 
 ## Example setup for BigWig and VCF
 

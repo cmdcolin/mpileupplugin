@@ -1,1 +1,0 @@
-chr	n_base	ref_base	read.depth	A	C	G	T	strand
