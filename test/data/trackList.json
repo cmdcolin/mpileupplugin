@@ -23,17 +23,21 @@
       "urlTemplate": "volvox-sorted.bam"
     },
     {
-      "type": "SNPCoverage",
+      "type": "MPileupPlugin/View/Track/SNPCoverage",
       "storeClass": "MPileupPlugin/Store/SeqFeature/BigWigVcf",
       "label": "SNPCoverage with BigWig+VCF",
-      "bigWig": {
+      "bigwig": {
         "storeClass": "JBrowse/Store/SeqFeature/BigWig",
-        "urlTemplate": "volvox-sorted.bam"
+        "urlTemplate": "volvox-sorted.bam.coverage.bw"
       },
       "vcf": {
         "storeClass": "JBrowse/Store/SeqFeature/VCFTabix",
         "urlTemplate": "volvox.filtered.vcf.gz"
       }
+    },
+    {
+      "urlTemplate": "volvox.filtered.vcf.gz",
+      "label": "VCF"
     }
   ],
   "formatVersion": 1,

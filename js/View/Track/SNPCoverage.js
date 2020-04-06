@@ -1,4 +1,5 @@
-define(['dojo/_base/declare',
+define([
+    'dojo/_base/declare',
     'JBrowse/View/Track/SNPCoverage'
 ],
 function (declare, SNPCoverageStore) {
