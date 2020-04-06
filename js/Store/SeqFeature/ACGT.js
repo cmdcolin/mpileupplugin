@@ -22,19 +22,19 @@ function (
             const start = +fields[1];
             const end = +fields[1] + 1;
             // const refBase = fields[2];
-            const depth = +fields[3] + 1;
+            const depth = +fields[3];
+
             const A = +fields[4];
             const C = +fields[5];
             const G = +fields[6];
             const T = +fields[7];
             // const strands = fields[8]
             const bin = new NestedFrequencyTable();
-            bin.increment('A', A);
-            bin.increment('C', C);
-            bin.increment('G', G);
-            bin.increment('T', T);
+            if (A)bin.increment('A', A);
+            if (C)bin.increment('C', C);
+            if (G)bin.increment('G', G);
+            if (T)bin.increment('T', T);
             bin.increment('reference', depth - A - C - G - T);
-            console.log(bin);
             return new CoverageFeature({start, end, score: bin});
         }
     });
