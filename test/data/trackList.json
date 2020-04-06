@@ -1,0 +1,24 @@
+{
+  "tracks": [
+    {
+      "seqType": "dna",
+      "key": "Reference sequence",
+      "storeClass": "JBrowse/Store/Sequence/StaticChunked",
+      "chunkSize": 20000,
+      "urlTemplate": "seq/{refseq_dirpath}/{refseq}-",
+      "label": "DNA",
+      "type": "SequenceTrack",
+      "category": "Reference sequence"
+    },
+    {
+      "type": "SNPCoverage",
+      "storeClass": "JBrowse/Store/SeqFeature/BedGraphTabix",
+      "label": "plot",
+      "urlTemplate": "data.bed.gz"
+    }
+  ],
+  "formatVersion": 1,
+  "plugins": [
+    "MPileup"
+  ]
+}
