@@ -13,8 +13,14 @@
     {
       "type": "MPileupPlugin/View/Track/SNPCoverage",
       "storeClass": "MPileupPlugin/Store/SeqFeature/ACGT",
-      "label": "plot",
+      "label": "SNPCoverage with ACGT table",
       "urlTemplate": "out.bed.gz"
+    },
+    {
+      "type": "SNPCoverage",
+      "storeClass": "JBrowse/Store/SeqFeature/BAM",
+      "label": "SNPCoverage with BAM",
+      "urlTemplate": "volvox-sorted.bam"
     }
   ],
   "formatVersion": 1,
