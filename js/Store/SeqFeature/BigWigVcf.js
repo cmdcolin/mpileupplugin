@@ -30,8 +30,6 @@ function (
                 newConf.config = Object.assign({}, args.config, conf);
                 this.vcf = new CLASS(newConf);
             }
-            // Promise.all([this.bigwig._deferred.features, this.vcf._deferred.features]).then(() => this._deferred.features.resolve({success: true}));
-            // Promise.all([this.bigwig._deferred.stats, this.vcf._deferred.stats]).then(() => this._deferred.stats({success: true}));
         },
 
         _getGlobalStats: function (successCallback, errorCallback) {
@@ -63,14 +61,17 @@ function (
                         reject
                     );
                 });
+                const val = vcfFeats.length ? [[vcfFeats[0].get('id'), vcfFeats[0]]] : [];
+                let currentVcfFeats = new Map(val);
+                let curr = 1;
                 for (let i = 0; i < coverageFeats.length; i++) {
                     let feat = coverageFeats[i];
                     const bin = new NestedFrequencyTable();
                     const start = feat.get('start');
                     const end = feat.get('end');
                     let score = Math.ceil(feat.get('score'));
-                    for (let j = 0; j < vcfFeats.length; j++) {
-                        const f = vcfFeats[j];
+                    for (const f of currentVcfFeats.values()) {
+                        console.log(f, f.get('start'), end);
                         if (Util.intersect(f.get('start'), f.get('end'), start + 1, end - 1)) {
                             const allele = f.get('alternative_alleles').values[0];
                             const r = f.get('DP4').values;
@@ -78,6 +79,13 @@ function (
                             score -= alt;
 
                             bin.increment(allele, alt);
+                        }
+                        if (start > f.get('end')) {
+                            currentVcfFeats.delete(f.get('id'));
+                            curr++;
+                            if (curr < vcfFeats.length) {
+                                currentVcfFeats.set(vcfFeats[curr].get('id'), vcfFeats[curr]);
+                            }
                         }
                     }
                     bin.increment('reference', score);
