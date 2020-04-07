@@ -32,17 +32,6 @@ function (
             }
         },
 
-        _getGlobalStats: function (successCallback, errorCallback) {
-            var s = this.bigwig._globalStats || {};
-
-            // calc mean and standard deviation if necessary
-            if (!('scoreMean' in s)) {s.scoreMean = s.basesCovered ? s.scoreSum / s.basesCovered : 0;}
-            if (!('scoreStdDev' in s)) {s.scoreStdDev = this.bigwig._calcStdFromSums(s.scoreSum, s.scoreSumSquares, s.basesCovered);}
-
-            successCallback(s);
-        },
-
-
         async getFeatures(query, featureCallback, finishCallback, errorCallback) {
             try {
                 const coverageFeats = await new Promise((resolve, reject) => {
@@ -71,7 +60,6 @@ function (
                     const end = feat.get('end');
                     let score = Math.ceil(feat.get('score'));
                     for (const f of currentVcfFeats.values()) {
-                        console.log(f, f.get('start'), end);
                         if (Util.intersect(f.get('start'), f.get('end'), start + 1, end - 1)) {
                             const allele = f.get('alternative_alleles').values[0];
                             const r = f.get('DP4').values;
@@ -82,9 +70,9 @@ function (
                         }
                         if (start > f.get('end')) {
                             currentVcfFeats.delete(f.get('id'));
-                            curr++;
                             if (curr < vcfFeats.length) {
                                 currentVcfFeats.set(vcfFeats[curr].get('id'), vcfFeats[curr]);
+                                curr++;
                             }
                         }
                     }

@@ -13,8 +13,8 @@ function (
     return declare(BEDTabix, {
         lineToFeature(columnNum, line) {
             const fields = line.split('\t');
-            const start = +fields[1];
-            const end = +fields[1] + 1;
+            const start = +fields[1] - 1;
+            const end = +fields[1];
             const refBase = fields[2];
 
             const A = +fields[4];
