@@ -41,7 +41,7 @@ The config is as follows
 
 This track type is not really optimized well because bedtabix for numerical data is slow
 
-## Example setup for BigWig and VCF
+## Example setup for BigWigVcf
 
 
 This assumes that the DP4 tag in the VCF info field exists and it assumes that DP4 is for a single alternative allele, no support for multiple alleles yet. It also doesn't handle multiple overlapping alleles properly and probably should not be used with structural variant calls in the VCF at the time being
@@ -60,6 +60,24 @@ This assumes that the DP4 tag in the VCF info field exists and it assumes that D
       }
     }
 
+
+### Example for BigWigVcfAdDp
+
+Same as above, but uses the first sample in the VCF's AD and DP field for it's genotype and supports alternative alleles
+
+    {
+      "type": "MPileupPlugin/View/Track/SNPCoverage",
+      "storeClass": "MPileupPlugin/Store/SeqFeature/BigWigVcf",
+      "label": "SNPCoverage with BigWig+VCF",
+      "bigwig": {
+        "storeClass": "JBrowse/Store/SeqFeature/BigWig",
+        "urlTemplate": "volvox-sorted.bam.coverage.bw"
+      },
+      "vcf": {
+        "storeClass": "JBrowse/Store/SeqFeature/VCFTabix",
+        "urlTemplate": "volvox.filtered.vcf.gz"
+      }
+    }
 
 ## Intallation
 
