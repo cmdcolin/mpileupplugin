@@ -14,6 +14,19 @@ function (
     NestedFrequencyTable,
     RegionStatsMixin,
 ) {
+/**
+     * Return whether 2 interbase coordinate ranges intersect.
+     *
+     * @param {number} left1
+     * @param {number} right1
+     * @param {number} left2
+     * @param {number} right2
+     *
+     * @returns {boolean} true if the two ranges intersect
+     */
+    intersect0(left1, right1, left2, right2) {
+      return right1 > left2 && left1 < right2
+    },
     return declare([SeqFeatureStore, RegionStatsMixin], {
         constructor(args) {
             if (args.bigwig) {
@@ -63,7 +76,7 @@ function (
                         bin.snpsCounted = true;
                         let score = feat.get('score');
                         for (const f of currentVcfFeats.values()) {
-                            if (Util.intersect0(f.get('start'), f.get('end'), start, end)) {
+                            if (intersect0(f.get('start'), f.get('end'), start, end)) {
                                 console.log(start, end);
                                 const genotypes = f.get('genotypes');
                                 const genotypeOfInterest = genotypes[Object.keys(genotypes)[0]];
