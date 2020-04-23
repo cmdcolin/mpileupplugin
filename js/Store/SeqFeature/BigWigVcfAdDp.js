@@ -24,9 +24,9 @@ function (
      *
      * @returns {boolean} true if the two ranges intersect
      */
-    intersect0(left1, right1, left2, right2) {
-      return right1 > left2 && left1 < right2
-    },
+    function intersect0(left1, right1, left2, right2) {
+        return right1 > left2 && left1 < right2;
+    }
     return declare([SeqFeatureStore, RegionStatsMixin], {
         constructor(args) {
             if (args.bigwig) {
