@@ -57,20 +57,23 @@ function (
                     let feat = coverageFeats[i];
                     const rstart = feat.get('start');
                     const rend = feat.get('end');
-                    const score = Math.ceil(feat.get('score'));
-                    console.log(rstart, rend);
                     for (let start = rstart; start < rend; start++) {
                         const end = start + 1;
                         const bin = new NestedFrequencyTable();
+                        bin.snpsCounted = true;
+                        let score = feat.get('score');
                         for (const f of currentVcfFeats.values()) {
-                            if (Util.intersect(f.get('start'), f.get('end'), start, end - 1)) {
+                            if (Util.intersect0(f.get('start'), f.get('end'), start, end)) {
+                                console.log(start, end);
                                 const genotypes = f.get('genotypes');
                                 const genotypeOfInterest = genotypes[Object.keys(genotypes)[0]];
-                                const AD = genotypeOfInterest.AD.values;
+                                const AD = (genotypeOfInterest.AD || {}).values || [];
 
                                 const alleles = f.get('alternative_alleles');
+                                console.log(alleles);
                                 alleles.values.forEach((allele, index) => {
-                                    bin.increment(allele, AD[index]);
+                                    score -= AD[index + 1];
+                                    bin.increment(allele, AD[index + 1] || 0);
                                 });
                                 // const alt = r[2] + r[3];
                                 // score -= alt;
