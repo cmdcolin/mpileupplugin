@@ -77,23 +77,17 @@ function (
                         let score = feat.get('score');
                         for (const f of currentVcfFeats.values()) {
                             if (intersect0(f.get('start'), f.get('end'), start, end)) {
-                                console.log(start, end);
                                 const genotypes = f.get('genotypes');
                                 const genotypeOfInterest = genotypes[Object.keys(genotypes)[0]];
                                 const AD = (genotypeOfInterest.AD || {}).values || [];
 
                                 const alleles = f.get('alternative_alleles');
-                                console.log(alleles);
                                 alleles.values.forEach((allele, index) => {
                                     score -= AD[index + 1];
                                     bin.increment(allele, AD[index + 1] || 0);
                                 });
-                                // const alt = r[2] + r[3];
-                                // score -= alt;
-
-                            // bin.increment(allele, alt);
                             }
-                            if (start > f.get('end')) {
+                            if (start > f.get('end') - 1) {
                                 currentVcfFeats.delete(f.get('id'));
                                 if (curr < vcfFeats.length) {
                                     currentVcfFeats.set(vcfFeats[curr].get('id'), vcfFeats[curr]);
@@ -101,8 +95,9 @@ function (
                                 }
                             }
                         }
-                        bin.increment('reference', score);
-
+                        if (score > 0) {
+                            bin.increment('reference', score);
+                        }
                         featureCallback(new CoverageFeature({start, end, score: bin}));
                     }
                 }
