@@ -2,6 +2,9 @@
 
 This plugin offers some alternative ways to visualize SNPCoverage track types with alternate data sources
 
+This plugin is basically experimental. If it finds a use for you let me know! It is not really guaranteed to match up the depths called by your depth caller of choice and your VCF though.
+
+See https://gist.github.com/cmdcolin/9f677eca28448d8a7c5d6e9917fc56af for some context on how coverage calculations can end up being calculated different across different tools.
 
 These are called ACGT for a simepl BED tabixed table of ACGT counts
 
