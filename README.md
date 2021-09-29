@@ -6,7 +6,7 @@ This plugin is basically experimental. If it finds a use for you let me know! It
 
 See https://gist.github.com/cmdcolin/9f677eca28448d8a7c5d6e9917fc56af for some context on how coverage calculations can end up being calculated different across different tools.
 
-These are called ACGT for a simepl BED tabixed table of ACGT counts
+These are called ACGT for a simple BED tabix'ed table of ACGT counts
 
 The other is a BigWig and VCF combo store
 
